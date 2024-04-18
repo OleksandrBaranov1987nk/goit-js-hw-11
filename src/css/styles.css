@@ -5,21 +5,87 @@
   |============================
 */
 @import url('./reset.css');
-@import url('./vite-promo.css');
-@import url('./header.css');
 
-:root {
-  font-family: Inter, Avenir, Helvetica, Arial, sans-serif;
+
+.form {
+  display: flex;
+  justify-content: center;
+  gap: 8px;
+  padding-top: 36px;
+  margin-bottom: 32px;
+}
+
+.form-input {
+  width: 272px;
+  height: 40px;
+  background-color: #fff;
+  border: 1px solid #808080;
+  border-radius: 4px;
+  padding: 0 16px;
+  color: #808080;
+  font-family: Montserrat;
   font-size: 16px;
-  line-height: 24px;
+  font-style: normal;
   font-weight: 400;
+  line-height: 24px; /* 150% */
+  letter-spacing: 0.64px;
+}
 
-  color: #242424;
-  background-color: rgba(255, 255, 255, 0.87);
+.form-input:hover {
+  border-color: #000;
+}
 
-  font-synthesis: none;
-  text-rendering: optimizeLegibility;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  -webkit-text-size-adjust: 100%;
+.form-input:active {
+  border: 1px solid #4e75ff;
+  color: #2e2f42;
+}
+.btn-submit {
+  display: block;
+  padding: 8px 16px;
+  justify-content: center;
+  align-items: center;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  background-color: #4e75ff;
+  color: #fff;
+  font-family: Montserrat;
+  font-size: 16px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: 24px; /* 150% */
+  letter-spacing: 0.64px;
+  box-shadow: 0 5px 15px 0 rgba(11, 99, 246, 1);
+  transition: 0.5s;
+}
+
+.btn-submit:hover {
+  background-color: #6c8cff;
+  transform: translate(0, -3px);
+  box-shadow: 0 20px 40px 0 rgba(11, 99, 246, 1);
+}
+
+
+.loader {
+  display: none;
+  position: relative;
+  width: 100px;
+  height: 100px;
+}
+
+.loader:before , .loader:after{
+  content: '';
+  border-radius: 50%;
+  position: absolute;
+  inset: 0;
+  box-shadow: 0 0 10px 2px rgba(0, 0, 0, 0.3) inset;
+}
+.loader:after {
+  box-shadow: 0 2px 0 #FF3D00 inset;
+  animation: rotate 2s linear infinite;
+}
+
+@keyframes rotate {
+  0% {  transform: rotate(0)}
+  100% { transform: rotate(360deg)}
 }
