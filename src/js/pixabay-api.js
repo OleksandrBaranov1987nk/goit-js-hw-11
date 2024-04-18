@@ -3,7 +3,7 @@ import "izitoast/dist/css/iziToast.min.css";
 
 
 const loader = document.querySelector('.loader');
-const KEY = 43440045-443c1624e1412379947e54b30;
+const KEY = '43440045-443c1624e1412379947e54b30';
 const BASE_URL = 'https://pixabay.com/api/';
 
 
