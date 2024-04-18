@@ -15,7 +15,9 @@ const lightbox = new SimpleLightbox('.gallery a', {
   const gallery = document.querySelector('.gallery');
   let searchWord = '';
 
-  form.addEventListener('submit', workSub);
 
   
+  form.addEventListener('submit', workSub);
+
+
 
