@@ -20,60 +20,37 @@ const lightbox = new SimpleLightbox('.gallery a', {
   const gallery = document.querySelector('.gallery');
   const loader = document.querySelector('.loader');
 
-  function showMessageError(textMes) {
+  function showMessageError() {
     iziToast.error({
-        iconUrl: iconError,
-        message: textMes,
-        maxWidth: '432px',
-        position: 'topRight',
-        messageSize: 16,
-        backgroundColor: '#ef4040',
+        
+        message: 'Sorry, there are no images matching your search query. Please try again!',
+        backgroundColor: '#ef4040',  
         titleColor: '#FFFFFF',
         messageColor: '#FFFFFF',
         theme: 'dark',
+        position: 'topRight',
+        messageSize: '400px',
+
     }); 
 }
 
-  // let searchWord = '';
-
-
-  // form.addEventListener('submit', workSub);
-
-  // function workSub(event) {
-  //   event.preventDefault();
-    
-  //   gallery.innerHTML = '';
-  //   searchWord = form.elements.searchWord.value.trim();
-    
-  //   getImages(searchWord)
-  //   .then(data => {
-  //     const marcup = renderMarcup(data);
-  //     gallery.insertAdjacentHTML('beforeend', marcup);
-
-  //     lightbox.refresh();
-  //   })
-  //   .catch(error => {
-  //     console.error('Error:', error);
-  //   });
-  // form.reset();
-  // }
-function showGallery (searchWord) {
+function showGallery(searchWord) {
   if (searchWord) {
     form.reset();
     gallery.innerHTML = '';
     loader.style.display = 'block';
     getImages(searchWord)
          .then(data => {
-          console.log(data);
-            //  const arrayImages = data.hits;
-             
-            //  if (arrayImages.length) {
-            //      gallery.innerHTML = renderMarcup(arrayImages);
-            //      lightbox.refresh();
-            //  } else {
-            //      showMessageError(
-            //          'Sorry, there are no images matching your search query. Please try again!');
-            //  }
+          
+
+             const allImages = data.hits;  
+             console.log(allImages);   
+             if (allImages.length > 0) {
+                 gallery.innerHTML = renderMarcup(allImages); 
+                 lightbox.refresh();
+             } else {
+                 showMessageError(error);
+             }
          })
          .catch((error) => showMessageError(error))
          .finally(() => loader.style.display = 'none');
@@ -86,37 +63,8 @@ function showGallery (searchWord) {
   function workSub(event) {
     event.preventDefault();
     const sarchWord = event.target.elements.searchWord.value;
-    showGallery (sarchWord);
+    showGallery(sarchWord);
 
   }
    
   
-
-
-
-
-
-
-
-
-
-
-//   .then(data => {
-
-//     // loader.style.display = 'none'; /-------исчез----/
-
-//     if (data.hits.length === 0) {
-//         iziToast.error({
-//           message:
-//             'Sorry, there are no images matching your search query. Please try again!',
-//             backgroundColor: '#ef4040',  
-//             titleColor: '#FFFFFF',
-//             messageColor: '#FFFFFF',
-//             theme: 'dark',
-//         });
-//     }
-//     return data;
-// })
-// .catch(error => {
-//     console.log(error);
-// });

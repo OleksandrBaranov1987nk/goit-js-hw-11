@@ -1,5 +1,5 @@
 export function renderMarcup(data) {
-    return data.hits
+    return data
       .map(
         el =>
           `<div class="gallery-item">
